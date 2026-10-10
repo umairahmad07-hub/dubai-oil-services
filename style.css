@@ -1282,3 +1282,165 @@ a {
     }
 
 }
+
+/* ===== PREMIUM 3D AUTOMOTIVE ANIMATIONS ===== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 70% 45%,
+        rgba(245, 158, 11, 0.20), transparent 42%);
+    animation: goldAura 8s ease-in-out infinite alternate;
+}
+
+.hero-content {
+    animation: heroEnter 1s ease-out both;
+}
+
+.hero h1 span {
+    display: inline-block;
+    transform-style: preserve-3d;
+    animation: titleFloat 4s ease-in-out infinite;
+}
+
+.service-card {
+    transform-style: preserve-3d;
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+.service-card:hover {
+    transform: perspective(1000px) rotateX(3deg)
+               rotateY(-3deg) translateY(-8px);
+    box-shadow: 0 20px 45px rgba(245, 158, 11, 0.16);
+}
+
+.service-visual {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.service-visual::after {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        115deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.16) 50%,
+        transparent 60%
+    );
+    transform: translateX(-65%);
+    animation: lightSweep 6s ease-in-out infinite;
+}
+
+.visual-circle,
+.alignment-machine,
+.large-tool {
+    position: relative;
+    z-index: 1;
+    transform-style: preserve-3d;
+    animation: objectFloat 3.5s ease-in-out infinite;
+}
+
+.visual-circle {
+    filter: drop-shadow(0 12px 18px rgba(245, 158, 11, 0.24));
+}
+
+.alignment-machine {
+    perspective: 800px;
+    filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.3));
+}
+
+.machine-body {
+    transform: translateZ(18px);
+    text-shadow: 0 4px 12px rgba(245, 158, 11, 0.45);
+}
+
+.info-card,
+.contact-card {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.info-card:hover,
+.contact-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 16px 35px rgba(245, 158, 11, 0.12);
+}
+
+.btn,
+.service-link,
+.dark-btn {
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.btn:hover,
+.service-link:hover,
+.dark-btn:hover {
+    filter: brightness(1.12);
+    transform: translateY(-2px);
+}
+
+@keyframes goldAura {
+    from { transform: translate3d(-2%, 0, 0) scale(0.95); }
+    to   { transform: translate3d(2%, -1%, 0) scale(1.08); }
+}
+
+@keyframes heroEnter {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes titleFloat {
+    0%, 100% { transform: translateY(0) rotateX(0); }
+    50%      { transform: translateY(-4px) rotateX(3deg); }
+}
+
+@keyframes objectFloat {
+    0%, 100% { transform: translateY(0) rotateY(-3deg); }
+    50%      { transform: translateY(-7px) rotateY(3deg); }
+}
+
+@keyframes lightSweep {
+    0%, 20%  { transform: translateX(-65%); }
+    65%, 100% { transform: translateX(65%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .service-card:hover,
+    .info-card:hover,
+    .contact-card:hover {
+        transform: none;
+    }
+}
